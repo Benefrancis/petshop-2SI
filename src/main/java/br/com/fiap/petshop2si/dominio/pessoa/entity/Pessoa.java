@@ -1,9 +1,21 @@
 package br.com.fiap.petshop2si.dominio.pessoa.entity;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "TB_PESSOA")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "TP_PESSOA")
 public abstract class Pessoa {
 
+    @Id
+    @SequenceGenerator(name = "SQ_PESSOA", sequenceName = "SQ_PESSOA", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PESSOA")
+    @Column(name = "ID_PESSOA")
     private Long id;
 
+    @Column(name = "NM_PESSOA")
     private String nome;
 
 
