@@ -17,7 +17,7 @@ public class PessoaJuridica extends Pessoa {
     @Column(name = "NR_IE")
     private String inscricaoEstadual;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.DETACH})
     @JoinTable(
             joinColumns = {
                     @JoinColumn(

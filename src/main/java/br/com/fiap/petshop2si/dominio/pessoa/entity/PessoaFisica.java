@@ -17,7 +17,7 @@ public class PessoaFisica extends Pessoa {
     @Column(name = "NR_RG")
     private String RG;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.DETACH})
     @JoinTable(
             name = "TB_DEPENDENTES",
             joinColumns = {
