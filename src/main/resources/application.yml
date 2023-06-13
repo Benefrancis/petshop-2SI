@@ -4,17 +4,23 @@ server:
     context-path: /api
 spring:
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521:XE
+    #url: jdbc:oracle:thin:@localhost:1521:XE
     #url: jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
-    username: BENEZINHO
+    #username: BENEZINHO
+    #password: root
+    #driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:mariadb://db-pessoas:3306/PESSOAS?createDatabaseIfNotExist=true
+    username: root
     password: root
-    driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: org.mariadb.jdbc.Driver
   jpa:
-    database-platform: org.hibernate.dialect.OracleDialect
+    #driver-class-name: org.mariadb.jdbc.Driver
+    database-platform: org.hibernate.dialect.MariaDBDialect
     generate-ddl: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.OracleDialect
+        #dialect: org.hibernate.dialect.OracleDialect
+        dialect: org.hibernate.dialect.MariaDBDialect
         show_sql: true
         format_sql: true
-        ddl-auto: create-drop
+        ddl-auto: create
