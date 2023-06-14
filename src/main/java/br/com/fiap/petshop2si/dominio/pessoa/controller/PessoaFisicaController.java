@@ -31,8 +31,7 @@ public class PessoaFisicaController {
     @GetMapping({"/{id}", "/{id}/"})
     public ResponseEntity<PessoaFisica> findById(@PathVariable Long id) {
         Optional<PessoaFisica> pessoaFisica = repo.findById(id);
-        if (pessoaFisica.isPresent()) return ResponseEntity.ok(pessoaFisica.get());
-        return ResponseEntity.notFound().build();
+        return pessoaFisica.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @Transactional
